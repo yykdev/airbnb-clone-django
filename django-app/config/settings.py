@@ -43,11 +43,11 @@ THIRD_PARTY_APPS = [
 
 ]
 
-LOCAL_APPS = [
-
+PROJECT_APPS = [
+    'db',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -90,6 +90,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'db.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
