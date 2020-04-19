@@ -37,7 +37,7 @@ class User(AbstractUser):
     )
     currency = models.CharField(
         choices=Constant.CURRENCY_CHOICES,
-        max_length=2,
+        max_length=3,
         null=True,
         blank=True,
     )
