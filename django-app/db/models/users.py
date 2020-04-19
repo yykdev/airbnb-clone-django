@@ -26,3 +26,21 @@ class User(AbstractUser):
         default='',
         blank=True,
     )
+    birthdate = models.DateField(
+        null=True,
+    )
+    language = models.CharField(
+        choices=Constant.LANGUAGE_CHOICES,
+        max_length=2,
+        null=True,
+        blank=True,
+    )
+    currency = models.CharField(
+        choices=Constant.CURRENCY_CHOICES,
+        max_length=2,
+        null=True,
+        blank=True,
+    )
+    is_superhost = models.BooleanField(
+        default=False,
+    )
