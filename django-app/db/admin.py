@@ -1,9 +1,24 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from . import models
 
 
 @admin.register(models.User)
-class CustomUserAdmin(admin.ModelAdmin):
+class CustomUserAdmin(UserAdmin):
 
-    list_display = ('username', 'email', 'gender', 'language', 'currency', 'is_superhost')
-    list_filter = ('language', 'currency', 'is_superhost')
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            'Profile',
+            {
+                'fields': (
+                    'avatar',
+                    'gender',
+                    'bio',
+                    'birthdate',
+                    'language',
+                    'currency',
+                    'is_superhost',
+                )
+            }
+        ),
+    )
