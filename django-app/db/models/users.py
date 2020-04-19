@@ -25,6 +25,7 @@ class User(AbstractUser):
     )
     birthdate = models.DateField(
         blank=True,
+        null=True,
     )
     language = models.CharField(
         choices=Constant.LANGUAGE_CHOICES,
