@@ -8,4 +8,6 @@ __all__ = (
 
 class User(AbstractUser):
 
-    pass
+    bio = models.TextField(
+        default='',
+    )
