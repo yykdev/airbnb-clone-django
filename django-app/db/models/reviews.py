@@ -42,3 +42,6 @@ class Review(core_models.TimeStampedModel):
         Room,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.review
