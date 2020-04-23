@@ -7,6 +7,9 @@ from core import models as core_models
 __all__ = (
     'Room',
     'RoomType',
+    'Amenity',
+    'Facility',
+    'HouseRule',
 )
 
 
@@ -26,6 +29,29 @@ class AbstractItem(core_models.TimeStampedModel):
 
 
 class RoomType(AbstractItem):
+
+    """ RoomType Object Definition """
+
+    pass
+
+
+class Amenity(AbstractItem):
+
+    """ Amenity Object Definition """
+
+    pass
+
+
+class Facility(AbstractItem):
+
+    """ Facility Object Definition """
+
+    pass
+
+
+class HouseRule(AbstractItem):
+
+    """ HouseRule Object Definition """
 
     pass
 
@@ -81,9 +107,19 @@ class Room(core_models.TimeStampedModel):
         default=False,
     )
 
-    room_type = models.ManyToManyField(
+    room_type = models.ForeignKey(
         RoomType,
-        blank=True,
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    amenities = models.ManyToManyField(
+        Amenity,
+    )
+    facilities = models.ManyToManyField(
+        Facility,
+    )
+    house_rules = models.ManyToManyField(
+        HouseRule,
     )
 
     def __str__(self):
