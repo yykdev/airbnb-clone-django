@@ -59,3 +59,6 @@ class Room(core_models.TimeStampedModel):
     instant_book = models.BooleanField(
         default=False,
     )
+
+    def __str__(self):
+        return self.name
