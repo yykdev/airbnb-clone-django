@@ -6,7 +6,28 @@ from core import models as core_models
 
 __all__ = (
     'Room',
+    'RoomType',
 )
+
+
+class AbstractItem(core_models.TimeStampedModel):
+
+    """ Abstract Item """
+
+    name = models.CharField(
+        max_length=80,
+    )
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class RoomType(AbstractItem):
+
+    pass
 
 
 class Room(core_models.TimeStampedModel):
@@ -58,6 +79,11 @@ class Room(core_models.TimeStampedModel):
     )
     instant_book = models.BooleanField(
         default=False,
+    )
+
+    room_type = models.ManyToManyField(
+        RoomType,
+        blank=True,
     )
 
     def __str__(self):
