@@ -13,6 +13,8 @@ class User(AbstractUser):
     """ Custom User Model """
 
     avatar = models.ImageField(
+        max_length=255,
+        upload_to="avatar/%Y/%m/%d",
         blank=True,
     )
     gender = models.CharField(

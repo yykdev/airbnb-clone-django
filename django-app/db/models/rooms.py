@@ -156,7 +156,10 @@ class Photo(core_models.TimeStampedModel):
     caption = models.CharField(
         max_length=80
     )
-    file = models.ImageField()
+    file = models.ImageField(
+        max_length=255,
+        upload_to="room/Photos/%Y/%m/%d",
+    )
     room = models.ForeignKey(
         Room,
         on_delete=models.CASCADE,
