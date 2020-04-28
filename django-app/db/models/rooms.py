@@ -64,12 +64,6 @@ class HouseRule(AbstractItem):
 
 class Room(core_models.TimeStampedModel):
 
-    host = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-    )
     name = models.CharField(
         max_length=40,
         blank=True,
@@ -113,22 +107,33 @@ class Room(core_models.TimeStampedModel):
         default=False,
     )
 
+    host = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='rooms',
+    )
     room_type = models.ForeignKey(
         RoomType,
         on_delete=models.SET_NULL,
         null=True,
+        related_name='rooms',
     )
     amenities = models.ManyToManyField(
         Amenity,
         blank=True,
+        related_name='rooms',
     )
     facilities = models.ManyToManyField(
         Facility,
         blank=True,
+        related_name='rooms',
     )
     house_rules = models.ManyToManyField(
         HouseRule,
         blank=True,
+        related_name='rooms',
     )
 
     def __str__(self):
@@ -144,7 +149,8 @@ class Photo(core_models.TimeStampedModel):
     file = models.ImageField()
     room = models.ForeignKey(
         Room,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='photos'
     )
 
     def __str__(self):
