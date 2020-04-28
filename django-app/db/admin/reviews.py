@@ -5,4 +5,7 @@ from . import models
 @admin.register(models.Review)
 class PhotoAdmin(admin.ModelAdmin):
 
-    pass
+    list_display = (
+        "__str__",
+        "rating_average",
+    )
