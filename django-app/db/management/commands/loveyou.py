@@ -15,4 +15,4 @@ class Command(BaseCommand):
 
         for t in range(0, int(times)):
 
-            print("I Love You")
+            self.stdout.write(self.style.SUCCESS("I Love You"))
