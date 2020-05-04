@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
+
 from . import models
 
 
@@ -16,8 +17,17 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.rooms.count()
 
 
+class PhotoInline(admin.TabularInline):
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
+
+    inlines = (
+        PhotoInline,
+    )
 
     fieldsets = (
         (
