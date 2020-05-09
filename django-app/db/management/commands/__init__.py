@@ -1,1 +1,1 @@
-from .loveyou import *
+from .seed_amenities import *
