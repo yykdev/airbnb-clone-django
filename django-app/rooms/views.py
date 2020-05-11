@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def all_rooms(request):
+
+    return render(request, 'rooms/all_rooms.html')
