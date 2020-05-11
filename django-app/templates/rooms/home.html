@@ -5,23 +5,21 @@
 {% block contents %}
 
     <div>
-    {% for room in rooms %}
-        <h3>{{ room.name }}</h3>
-    {% endfor %}
-    </div>
-
-    <h5>Page {{ page }} in {{ page_count }}</h5>
-
-    <div>
-        {% if page is not 1 %}
-            <a href="?page={{ page|add:-1 }}">Previous</a>
-        {% endif %}
-        {% for num in page_range %}
-            <a href="?page={{ num }}">{{ num }}</a>
+        {% for room in rooms.object_list %}
+            <h3>{{ room.name }}</h3>
         {% endfor %}
-        {% if not page == page_count %}
-            <a href="?page={{ page|add:1 }}">Next</a>
-        {% endif %}
     </div>
+
+    <h5>
+        {% if rooms.has_previous %}
+            <a href="?page={{ rooms.number|add:-1 }}">Previous</a>
+        {% endif %}
+
+        Page {{ rooms.number }} in {{ rooms.paginator.num_pages }}
+
+        {% if rooms.has_next %}
+            <a href="?page={{ rooms.number|add:1 }}">Next</a>
+        {% endif %}
+    </h5>
 
 {% endblock %}
