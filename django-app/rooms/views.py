@@ -8,7 +8,11 @@ from db.models import Room
 def all_rooms(request):
 
     page = request.GET.get('page', 1)
-    page = int(page or 1)
+
+    try:
+        page = int(page or 1)
+    except ValueError:
+        page = 1
     page_size = 5
     limit = page * page_size
     offset = limit - page_size
