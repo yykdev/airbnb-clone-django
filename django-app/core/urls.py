@@ -5,5 +5,5 @@ from rooms import views as rooms_view
 app_name = "core"
 
 urlpatterns = [
-    path("", rooms_view.all_rooms, name="home"),
+    path("", rooms_view.HomeView.as_view(), name="home"),
 ]
