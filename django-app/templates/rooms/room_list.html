@@ -4,8 +4,10 @@
 
 {% block contents %}
 
+    {{ now }}
+
     <div>
-        {% for room in object_list %}
+        {% for room in rooms %}
             <h3>{{ room.name }}</h3>
         {% endfor %}
     </div>
