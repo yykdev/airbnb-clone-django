@@ -26,3 +26,12 @@ class HomeView(ListView):
         context["now"] = now
 
         return context
+
+
+def room_detail(request, id):
+
+    context = {
+
+    }
+
+    return render(request, 'rooms/detail.html', context=context)
