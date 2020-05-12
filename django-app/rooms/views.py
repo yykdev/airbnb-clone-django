@@ -1,7 +1,4 @@
-from math import ceil
-
-from django.shortcuts import render, redirect
-from django.core.paginator import Paginator, EmptyPage
+from django.shortcuts import render
 from django.utils import timezone
 from django.views.generic import ListView
 
