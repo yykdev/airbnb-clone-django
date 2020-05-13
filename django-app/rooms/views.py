@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import ListView
@@ -39,4 +40,4 @@ def room_detail(request, id):
 
     except Room.DoesNotExist:
 
-        return redirect("core:home")
+        raise Http404()
