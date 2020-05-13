@@ -20,4 +20,16 @@
         <h3>{{ room.name }}</h3>
     {% endfor %}
 
+    <h3>Page {{ rooms.number }} of {{ rooms.paginator.num_pages }}</h3>
+
+    {% if rooms.has_previous %}
+        <a href="{% url 'rooms:search' %}?{{ query_string }}&page={{ rooms.previous_page_number }}"><h4>Previous</h4></a>
+    {% endif %}
+
+
+
+    {% if rooms.has_next %}
+        <a href="{% url 'rooms:search' %}?{{ query_string }}&page={{ rooms.next_page_number }}"><h4>Next</h4></a>
+    {% endif %}
+
 {% endblock %}
