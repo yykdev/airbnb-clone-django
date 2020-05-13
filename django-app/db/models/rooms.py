@@ -88,6 +88,7 @@ class Room(core_models.TimeStampedModel):
     )
     guests = models.IntegerField(
         default=0,
+        help_text="총 인원 수를 입력하세요.",
     )
     beds = models.IntegerField(
         default=0,
