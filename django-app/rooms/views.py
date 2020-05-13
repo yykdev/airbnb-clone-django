@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.generic import ListView
 
@@ -27,8 +27,16 @@ class HomeView(ListView):
 
 def room_detail(request, id):
 
-    context = {
+    try:
 
-    }
+        room = Room.objects.get(id=id)
 
-    return render(request, 'rooms/detail.html', context=context)
+        context = {
+            'room': room,
+        }
+
+        return render(request, 'rooms/detail.html', context=context)
+
+    except Room.DoesNotExist:
+
+        return redirect("core:home")

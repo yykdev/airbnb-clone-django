@@ -1,27 +1,42 @@
 {% extends '../base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Room Detail{% endblock %}
 
 {% block contents %}
 
-    {{ now }}
-
     <div>
-        {% for room in rooms %}
-            <h3>{{ room.name }}</h3>
-        {% endfor %}
+        <h1>{{ room.name }}</h1>
+        <h3>{{ room.description }}</h3>
     </div>
 
-    <h5>
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
+    <div>
+        <h2>
+            {{ room.host.username }}
+                {% if room.host.is_superhost %}
+                (superhost)
+            {% endif %}
+        </h2>
+        <h3>Amenities</h3>
+        <ul>
+            {% for a in room.amenities.all %}
+                <li>{{ a }}</li>
+            {% endfor %}
 
-        Page {{ page_obj.number }} in {{ page_obj.paginator.num_pages }}
+        </ul>
+        <h3>Facilities</h3>
+        <ul>
+            {% for a in room.facilities.all %}
+                <li>{{ a }}</li>
+            {% endfor %}
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        {% endif %}
-    </h5>
+        </ul>
+        <h3>House rules</h3>
+        <ul>
+            {% for a in room.house_rules.all %}
+                <li>{{ a }}</li>
+            {% endfor %}
+
+        </ul>
+    </div>
 
 {% endblock %}
