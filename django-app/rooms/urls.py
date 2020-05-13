@@ -5,5 +5,5 @@ app_name = "rooms"
 
 
 urlpatterns = [
-    path('detail/<int:id>/', views.room_detail, name='detail'),
+    path('detail/<int:pk>/', views.RoomDetail.as_view(), name='detail'),
 ]
