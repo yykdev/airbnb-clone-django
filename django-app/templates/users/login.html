@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block contents %}
+
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button>Login</button>
+</form>
+{% endblock %}
