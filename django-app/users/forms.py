@@ -9,25 +9,15 @@ class LoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-
-        try:
-            User.objects.get(username=email)
-
-            return email
-        except User.DoesNotExist:
-            raise forms.ValidationError("해당하는 유저가 존재하지 않습니다")
-
-    def clean_password(self):
+    def clean(self):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
 
         try:
-            user = User.objects.get(username=email)
+            user = User.objects.get(email=email)
             if user.check_password(password):
-                return email
+                return self.cleaned_data
             else:
-                raise forms.ValidationError("비밀번호가 유효하지 않습니다.")
+                self.add_error("password", forms.ValidationError("비밀번호가 유효하지 않습니다."))
         except User.DoesNotExist:
-            raise forms.ValidationError("해당하는 유저가 존재하지 않습니다")
+            self.add_error("email", forms.ValidationError("해당하는 유저가 존재하지 않습니다"))
