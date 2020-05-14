@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-
+from django.contrib.auth import authenticate, login
 from users.forms import LoginForm
 
 
@@ -22,7 +22,14 @@ class LoginView(View):
 
         if form.is_valid():
 
-            print(form.cleaned_data)
+            email = form.cleaned_data["email"]
+            password = form.cleaned_data["password"]
+
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+
+                return redirect("core:home")
 
         context = {
             'form': form,
