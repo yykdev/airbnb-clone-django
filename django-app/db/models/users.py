@@ -31,11 +31,13 @@ class User(AbstractUser):
     )
     language = models.CharField(
         choices=Constant.LANGUAGE_CHOICES,
+        default=Constant.LANGUAGE_KOREAN,
         max_length=2,
         blank=True,
     )
     currency = models.CharField(
         choices=Constant.CURRENCY_CHOICES,
+        default=Constant.CURRENCY_KRW,
         max_length=3,
         blank=True,
     )
