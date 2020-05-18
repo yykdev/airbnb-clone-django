@@ -95,7 +95,7 @@ def github_callback(request):
                 headers={"Accept": "application/json"}
             )
             token_json = token_requests.json()
-            error = result_json.get("error", None)
+            error = token_json.get("error", None)
             if error is not None:
                 raise GithubException()
             else:
