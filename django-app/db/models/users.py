@@ -57,6 +57,11 @@ class User(AbstractUser):
         max_length=120,
         default="",
     )
+    login_method = models.CharField(
+        max_length=50,
+        choices=Constant.LOGIN_CHOICES,
+        default=Constant.LOGIN_EMAIL,
+    )
 
     def verify_email(self):
         if self.email_verified is False:

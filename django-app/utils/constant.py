@@ -36,3 +36,13 @@ class Constant:
         (STATUS_CONFIRMED, "Confirmed"),
         (STATUS_CANCELED, "Canceled"),
     )
+
+    LOGIN_EMAIL = "email"
+    LOGIN_GITHUB = "github"
+    LOGIN_KAKAO = "kakao"
+
+    LOGIN_CHOICES = (
+        (LOGIN_EMAIL, "Email"),
+        (LOGIN_GITHUB, "Github"),
+        (LOGIN_KAKAO, "Kakao"),
+    )
