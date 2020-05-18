@@ -8,16 +8,19 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = UserAdmin.fieldsets + (
         (
-            'Profile',
+            "Profile",
             {
-                'fields': (
-                    'avatar',
-                    'gender',
-                    'bio',
-                    'birthdate',
-                    'language',
-                    'currency',
-                    'is_superhost',
+                "fields": (
+                    "avatar",
+                    "gender",
+                    "bio",
+                    "birthdate",
+                    "language",
+                    "currency",
+                    "is_superhost",
+                    "email_verified",
+                    "email_secret",
+                    "login_method"
                 )
             }
         ),
