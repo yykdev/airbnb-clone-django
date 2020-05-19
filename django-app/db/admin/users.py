@@ -20,15 +20,13 @@ class CustomUserAdmin(UserAdmin):
                     "is_superhost",
                     "email_verified",
                     "email_secret",
-                    "login_method"
+                    "login_method",
                 )
-            }
+            },
         ),
     )
 
-    list_filter = UserAdmin.list_filter + (
-        "is_superhost",
-    )
+    list_filter = UserAdmin.list_filter + ("is_superhost",)
 
     list_display = (
         "username",

@@ -24,7 +24,6 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(forms.ModelForm):
-
     class Meta:
         model = User
         fields = (

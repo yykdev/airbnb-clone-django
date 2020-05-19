@@ -17,6 +17,4 @@ class ReservationsAdmin(admin.ModelAdmin):
         "is_finished",
     )
 
-    list_filter = (
-        "status",
-    )
+    list_filter = ("status",)

@@ -9,9 +9,7 @@ class SearchForm(forms.Form):
     city = forms.CharField(initial="Aniwhere")
     country = CountryField(default="KR").formfield()
     room_type = forms.ModelChoiceField(
-        required=False,
-        empty_label="Any kind",
-        queryset=RoomType.objects.all()
+        required=False, empty_label="Any kind", queryset=RoomType.objects.all()
     )
     price = forms.IntegerField(required=False)
     guests = forms.IntegerField(required=False)
@@ -23,10 +21,10 @@ class SearchForm(forms.Form):
     amenities = forms.ModelMultipleChoiceField(
         required=False,
         queryset=Amenity.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.CheckboxSelectMultiple,
     )
     facilities = forms.ModelMultipleChoiceField(
         required=False,
         queryset=Facility.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.CheckboxSelectMultiple,
     )

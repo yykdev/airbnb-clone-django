@@ -3,17 +3,15 @@ from django.db import models
 from core import models as core_models
 
 __all__ = (
-    'Conversation',
-    'Message',
+    "Conversation",
+    "Message",
 )
 
 
 class Conversation(core_models.TimeStampedModel):
 
     participants = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        blank=True,
-        related_name='conversation',
+        settings.AUTH_USER_MODEL, blank=True, related_name="conversation",
     )
 
     def __str__(self):
@@ -36,21 +34,17 @@ class Conversation(core_models.TimeStampedModel):
 
         return self.participants.count()
 
-        count_participants.short_description = "Number of participants"
+    count_participants.short_description = "Number of participants"
 
 
 class Message(core_models.TimeStampedModel):
 
     message = models.TextField()
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='messages',
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="messages",
     )
     conversation = models.ForeignKey(
-        Conversation,
-        on_delete=models.CASCADE,
-        related_name='messages',
+        Conversation, on_delete=models.CASCADE, related_name="messages",
     )
 
     def __str__(self):

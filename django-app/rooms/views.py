@@ -24,7 +24,6 @@ class RoomDetail(DetailView):
 
 
 class Search(View):
-
     def get(self, request):
 
         country = request.GET.get("country")
@@ -92,14 +91,14 @@ class Search(View):
                 rooms = paginator.get_page(page)
 
                 context = {
-                    'form': form,
-                    'rooms': rooms,
-                    'query_string': request.environ.get('QUERY_STRING')
+                    "form": form,
+                    "rooms": rooms,
+                    "query_string": request.environ.get("QUERY_STRING"),
                 }
 
-                return render(request, 'rooms/room_search.html', context=context)
+                return render(request, "rooms/room_search.html", context=context)
 
         else:
             form = SearchForm()
 
-        return render(request, 'rooms/room_search.html', context={'form': form})
+        return render(request, "rooms/room_search.html", context={"form": form})
