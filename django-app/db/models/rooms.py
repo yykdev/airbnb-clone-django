@@ -1,5 +1,5 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
 from django.urls import reverse
 
 from django_countries.fields import CountryField
@@ -115,6 +115,13 @@ class Room(core_models.TimeStampedModel):
 
             return all_ratings / len(all_reviews)
         return 0
+
+    def first_photo(self):
+        photo = self.photos.first()
+        if photo:
+            return photo.file.url
+        else:
+            return None
 
 
 class Photo(core_models.TimeStampedModel):
