@@ -10,3 +10,27 @@
 
 1. db 모델의 경우 별도의 app 으로 관리
 
+## Tailwind CSS
+
+#### 초기 셋팅
+
+1. npm gulp gulp-postcss gulp-sass gulp-csso node-sass
+
+2. npm install tailwindcss -D
+
+3. npm i autoprefixer -D
+
+4. npx tailwind init
+
+5. 기본 설정 파일 셋팅
+
+-   노마드 코더 airbnb Git 저장소 참고
+
+```
+package.json
+tailwind.config.js
+gulpfile.js
+assets/scss/styles.scss
+```
+
+6. npm run css
