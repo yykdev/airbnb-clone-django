@@ -20,7 +20,7 @@
             {% block search-bar %}
             <form action="{% url 'rooms:search' %}" method="get" class="w-9/12">
                 <input
-                    class="search-box border px-5 py-3 w-full font-medium text-gray-900 placeholder-gray-600 rounded-sm w-64 shadow-md hover:shadow-lg focus:outline-none"
+                    class="search-box border border-gray-400 px-5 py-3 w-full font-medium text-gray-900 placeholder-gray-600 rounded-sm w-64 shadow-md hover:shadow-lg focus:outline-none"
                     name="city" type="text" placeholder="Search by City">
             </form>
             {% endblock search-bar %}
