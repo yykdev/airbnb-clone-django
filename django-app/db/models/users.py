@@ -36,7 +36,7 @@ class User(AbstractUser):
     )
     is_superhost = models.BooleanField(default=False,)
     email_verified = models.BooleanField(default=False,)
-    email_secret = models.CharField(max_length=120, default="",)
+    email_secret = models.CharField(max_length=120, default="", blank=True,)
     login_method = models.CharField(
         max_length=50, choices=Constant.LOGIN_CHOICES, default=Constant.LOGIN_EMAIL,
     )
