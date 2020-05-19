@@ -10,7 +10,7 @@ class HomeView(ListView):
 
     model = Room
     template_name = "rooms/room_list.html"
-    paginate_by = 10
+    paginate_by = 8
     # paginate_orphans = 5
     ordering = "created"
     context_object_name = "rooms"
